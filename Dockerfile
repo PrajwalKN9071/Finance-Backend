@@ -20,8 +20,8 @@ WORKDIR /app
 # Copy the project's pom.xml file
 COPY pom.xml .
 
-# Download the project dependencies
-RUN mvn dependency:go-offline -B
+# Download the project dependencies, excluding the problematic dependency
+RUN mvn dependency:go-offline -B -Dmaven.repo.local=/tmp/m2/repository -DexcludeGroupIds=com.oracle.database.xml
 
 # Copy the source code
 COPY src ./src
