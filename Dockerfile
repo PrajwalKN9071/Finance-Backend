@@ -10,7 +10,6 @@
 # Set the command to run the Java application
 #CMD ["java", "-jar", "app.jar"]
 
-
 # Use a base image with Java and Maven pre-installed
 FROM maven:3.8.4-openjdk-11 AS build
 
@@ -20,13 +19,13 @@ WORKDIR /app
 # Copy the project's pom.xml file
 COPY pom.xml .
 
-# Download the project dependencies, excluding the problematic dependency
-RUN mvn dependency:go-offline -B -Dmaven.repo.local=/tmp/m2/repository -DexcludeGroupIds=com.oracle.database.xml
+# Build the application without downloading dependencies
+RUN mvn package --offline
 
 # Copy the source code
 COPY src ./src
 
-# Build the application
+# Build the application, resolving dependencies from the local repository
 RUN mvn package
 
 # Create a new image with a smaller footprint
