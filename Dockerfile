@@ -1,16 +1,16 @@
-/*# This is the base image for Windows Server Core with Java 8
-FROM openjdk:8-windowsservercore
+# This is the base image for Windows Server Core with Java 8
+#FROM openjdk:8-windowsservercore
 
 # Set the working directory
-WORKDIR /app
+#WORKDIR /app
 
 # Copy the application files to the container
-COPY . .
+#COPY . .
 
 # Set the command to run the Java application
-CMD ["java", "-jar", "app.jar"]
+#CMD ["java", "-jar", "app.jar"]
 
-*/
+
 # Use a base image with Java and Maven pre-installed
 FROM maven:3.8.4-openjdk-11 AS build
 
