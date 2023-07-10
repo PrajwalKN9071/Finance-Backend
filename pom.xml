@@ -56,16 +56,9 @@
 			</plugin>
 		</plugins>
 	</build>
-	<build>
-  <plugins>
-    <!-- Add the SonarScanner for Maven plugin -->
-    <plugin>
-      <groupId>org.sonarsource.scanner.maven</groupId>
-      <artifactId>sonar-maven-plugin</artifactId>
-      <version>3.9.0.2155</version>
-    </plugin>
-  </plugins>
-</build>
-
+<properties>
+  <sonar.organization>prajwalkn9071</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+</properties>
 
 </project>
